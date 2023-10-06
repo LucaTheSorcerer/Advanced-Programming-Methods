@@ -4,53 +4,55 @@ public class Ex1 {
 
     public int[] notGoodEnoughGrade(@NotNull int[] grades) {
         int[] finalNotes = new int[grades.length];
+        int finalNotesCount = 0;
 
-        for(int i = 0; i < grades.length; i++) {
-            if(roundGrade(grades[i]) >= 40) {
-                finalNotes = addToArray(finalNotes, roundGrade(grades[i]));
+        for (int i = 0; i < grades.length; i++) {
+            int roundedGrade = roundGrade(grades[i]);
+            if (roundedGrade >= 40) {
+                finalNotes[finalNotesCount] = roundedGrade;
+                finalNotesCount++;
             }
         }
 
-        return finalNotes;
+        // Resize the finalNotes array to remove unused elements
+        int[] result = new int[finalNotesCount];
+        System.arraycopy(finalNotes, 0, result, 0, finalNotesCount);
 
+        return result;
     }
 
     public int roundGrade(int grade) {
-        if(grade < 38) {
+        if (grade < 38) {
             return grade;
         }
 
-        else {
-            return grade + grade%5;
+        int nextMultipleOfFive = ((grade + 4) / 5) * 5; // Round to the nearest multiple of 5
+
+        if (nextMultipleOfFive - grade < 3) {
+            return nextMultipleOfFive;
+        } else {
+            return grade;
         }
     }
-
-    //do the same notGoodEnoughGrade but with the object array
 
     public Object[] notGoodEnoughGradeObj(@NotNull Object[] grades) {
         Object[] finalNotes = new Object[grades.length];
+        int finalNotesCount = 0;
 
-        for(int i = 0; i < grades.length; i++) {
-            if(roundGrade((Integer) grades[i]) >= 40) {
-                finalNotes[i] = roundGrade((Integer) grades[i]);
+        for (int i = 0; i < grades.length; i++) {
+            if (grades[i] instanceof Integer) {
+                int roundedGrade = roundGrade((Integer) grades[i]);
+                if (roundedGrade >= 40) {
+                    finalNotes[finalNotesCount] = roundedGrade;
+                    finalNotesCount++;
+                }
             }
         }
 
-        return finalNotes;
-    }
-
-    public int[] addToArray(int[] original, int newElement) {
-        int[] result = new int[original.length + 1];
-
-        //System.arraycopy(original, 0, result, 0, original.length);
-
-        for(int i = 0; i < original.length; i++) {
-            result[i] = original[i];
-        }
-
-        result[original.length] = newElement;
+        // Resize the finalNotes array to remove unused elements
+        Object[] result = new Object[finalNotesCount];
+        System.arraycopy(finalNotes, 0, result, 0, finalNotesCount);
 
         return result;
-
     }
 }
