@@ -66,6 +66,23 @@ public class TestEx4 {
         }
     }
 
+    @Test
+    public void testBudget() {
+        int[] keyboards = {40, 50, 60};
+        int[] usbDrives = {8, 12};
+        int budget = 60;
+        int expected = 58;
+
+        int result = Ex4.calculateTotalCost(budget,keyboards,usbDrives);
+
+        Assertions.assertEquals(expected, result);
+        if(result == expected) {
+            tstUtils.testLogger(TEST_FOUR, tstUtils.SUCCESSFUL);
+        } else {
+            tstUtils.testLogger(TEST_FOUR, tstUtils.FAILED);
+        }
+    }
+
 
 
 }

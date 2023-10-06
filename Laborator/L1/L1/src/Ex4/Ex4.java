@@ -26,4 +26,23 @@ public class Ex4 {
 
         return -1;
     }
+
+    public static int calculateTotalCost(int budget, int[] keyboards, int[] usbDrives) {
+        Arrays.sort(keyboards);
+        Arrays.sort(usbDrives);
+
+        int maxCost = -1;
+
+        for (int keyboard : keyboards) {
+            for (int usbDrive : usbDrives) {
+                int totalCost = keyboard + usbDrive;
+                if (totalCost <= budget && totalCost > maxCost) {
+                    maxCost = totalCost;
+                }
+            }
+        }
+
+        return maxCost;
+    }
+
 }
