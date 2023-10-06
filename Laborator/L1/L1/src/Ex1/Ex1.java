@@ -1,4 +1,8 @@
+package Ex1;
+
 import org.jetbrains.annotations.NotNull;
+import java.util.Arrays;
+
 
 public class Ex1 {
 
@@ -26,7 +30,7 @@ public class Ex1 {
             return grade;
         }
 
-        int nextMultipleOfFive = ((grade + 4) / 5) * 5; // Round to the nearest multiple of 5
+        int nextMultipleOfFive = ((grade + 4) / 5) * 5;
 
         if (nextMultipleOfFive - grade < 3) {
             return nextMultipleOfFive;
@@ -55,4 +59,40 @@ public class Ex1 {
 
         return result;
     }
+
+    //write a method that becomes an array of grades and computes the average grade
+
+    public double averageGrade(@NotNull int[] grades) {
+        double sum = 0;
+        for(int grade : grades) {
+            sum += grade;
+        }
+        return sum / grades.length;
+    }
+
+
+    public int[] roundGrades(@NotNull int[] grades) {
+        int[] roundedGrades = new int[grades.length];
+        for (int i = 0; i < grades.length; i++) {
+            roundedGrades[i] = roundGrade(grades[i]);
+        }
+        System.out.println("Rounded grades: " + Arrays.toString(roundedGrades));
+
+        return roundedGrades;
+    }
+
+
+    public int biggestRoundedGrade(@NotNull int[] grades) {
+        int biggestRoundedGrade = 0;
+
+        for(int grade : grades) {
+            if(roundGrade(grade) > biggestRoundedGrade) {
+                biggestRoundedGrade = roundGrade(grade);
+            }
+        }
+        return biggestRoundedGrade;
+    }
+
+
+
 }
