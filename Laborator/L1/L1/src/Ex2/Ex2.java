@@ -1,5 +1,10 @@
 package Ex2;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import java.util.Arrays;
+
 
 public class Ex2 {
 
@@ -68,6 +73,42 @@ public class Ex2 {
         return arr[arr.length - 1];
     }
 
+    public int returnMinNumber(int[] arr) {
 
+        mergeSort(arr, 0, arr.length - 1);
 
+        return arr[0];
+    }
+
+    //find the maximum sum of biggest n-1 number so exclude the smallest number
+
+    public int returnMaxSum(int[] arr) {
+
+        mergeSort(arr, 0, arr.length - 1);
+
+        int sum = 0;
+        int minElement = arr[0];
+
+        for(int num : arr) {
+            sum += num;
+        }
+
+        return sum - minElement;
+    }
+
+    //find the minimum sum of smallest n-1 number so exclude the biggest number
+
+    public int returnMinSum(int[] arr) {
+
+        mergeSort(arr, 0, arr.length - 1);
+
+        int sum = 0;
+        int maxElement = arr[arr.length - 1];
+
+        for(int num : arr) {
+            sum += num;
+        }
+
+        return sum - maxElement;
+    }
 }
