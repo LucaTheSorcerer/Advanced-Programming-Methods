@@ -48,6 +48,22 @@ public class TestEx3 {
         printAssertionResult(expectedResult, result, TEST_TWO);
     }
 
+    @Test
+    public void testMultiplication() {
+
+        int[] number = {2, 3, 6, 0, 0, 0, 0, 0, 0};
+        int integer = 2;
+
+        int[] expectedResult = {4, 7, 2, 0, 0, 0, 0, 0, 0};
+
+        int[] result = Ex3.multiply(number, integer);
+
+        printAssertionResult(expectedResult, result, TEST_THREE);
+
+    }
+
+    
+
     private void printAssertionResult(int[] expectedResult, int[] result, String testTwo) {
         System.out.println("Result: " + Arrays.toString(result));
         System.out.println("Expected: " + Arrays.toString(expectedResult));
@@ -60,6 +76,7 @@ public class TestEx3 {
             testLogger(testTwo, FAILED);
         }
     }
+
 
 
 
