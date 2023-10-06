@@ -50,7 +50,6 @@ public class TestEx3 {
 
     @Test
     public void testMultiplication() {
-
         int[] number = {2, 3, 6, 0, 0, 0, 0, 0, 0};
         int integer = 2;
 
@@ -59,10 +58,20 @@ public class TestEx3 {
         int[] result = Ex3.multiply(number, integer);
 
         printAssertionResult(expectedResult, result, TEST_THREE);
-
     }
 
-    
+    @Test
+    public void testDivision() {
+        int[] number = {2, 3, 6, 0, 0, 0, 0, 0, 0};
+        int divisor = 2;
+
+        int[] expectedResult = {1, 1, 8, 0, 0, 0, 0, 0, 0};
+
+        int[] result = Ex3.divide(number, divisor);
+
+        printAssertionResult(expectedResult, result, TEST_FOUR);
+    }
+
 
     private void printAssertionResult(int[] expectedResult, int[] result, String testTwo) {
         System.out.println("Result: " + Arrays.toString(result));
@@ -76,9 +85,6 @@ public class TestEx3 {
             testLogger(testTwo, FAILED);
         }
     }
-
-
-
 
 
     private static void testLogger(String testName, String result) {

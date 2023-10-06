@@ -80,13 +80,13 @@ public class Ex3 {
         return result;
     }
 
-    public static int[] divide(int[] number1, int divisor) {
-        int length = number1.length;
-        int[] result = new int[length];
+    public static int[] divide(int[] num1, int divisor) {
+        int n = num1.length;
+        int[] result = new int[n];
         int remainder = 0;
 
-        for(int i = 0; i < length; i++) {
-            int currentDigit = number1[i] + remainder * 10;
+        for (int i = 0; i < n; i++) {
+            int currentDigit = num1[i] + remainder * 10;
             result[i] = currentDigit / divisor;
             remainder = currentDigit % divisor;
         }
