@@ -16,6 +16,17 @@ public class Ex3 {
     //1.
     public static int[] sum(int[] number1, int[] number2) {
 
+        //exceptions
+
+        if(number1 == null || number2 == null) {
+            throw  new IllegalArgumentException("Array is null");
+        }
+
+        if (number1.length == 0 || number2.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
+
+
         int[] result = new int[number1.length + 1];
         int carry = 0;
         int length = number1.length;
@@ -39,6 +50,17 @@ public class Ex3 {
 
     //2.
     public static int[] subtract(int[] number1, int[] number2) {
+
+        //exceptions
+
+        if(number1 == null || number2 == null) {
+            throw  new IllegalArgumentException("Array is null");
+        }
+
+        if (number1.length == 0 || number2.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
+
         int n = number1.length;
         int[] result = new int[n];
         int borrow = 0;
@@ -60,6 +82,17 @@ public class Ex3 {
     }
 
     public static int[] multiply(int[] number1, int digit) {
+
+        //exceptions
+
+        if(number1 == null) {
+            throw  new IllegalArgumentException("Array is null");
+        }
+
+        if (number1.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
+
         int length = number1.length;
         int[] result = new int[length];
         int carry = 0;
@@ -81,6 +114,17 @@ public class Ex3 {
     }
 
     public static int[] divide(int[] num1, int divisor) {
+
+        //exceptions
+
+        if(num1 == null) {
+            throw  new IllegalArgumentException("Array is null");
+        }
+
+        if (num1.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
+
         int n = num1.length;
         int[] result = new int[n];
         int remainder = 0;

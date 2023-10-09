@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utils.tstUtils;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 
 public class TestEx4 {
 
@@ -20,7 +22,7 @@ public class TestEx4 {
     }
 
     @Test
-    public void testfindCheapestKeyboard() {
+    public void testFindCheapestKeyboard() {
         int[] keyboards = {40, 50, 60};
         int expected = 40;
 
@@ -32,6 +34,14 @@ public class TestEx4 {
         } catch (AssertionError e) {
             tstUtils.testLogger(TEST_ONE, tstUtils.FAILED);
         }
+    }
+
+    @Test
+    public void testfindCheapestKeyboardFail() {
+        int[] keyboards = {};
+        assertThrows(IllegalArgumentException.class, ()-> Ex4.findCheapestKeyboard(keyboards));
+
+
     }
 
     @Test
@@ -51,6 +61,14 @@ public class TestEx4 {
     }
 
     @Test
+    public void testFindMostExpensiveProductFail() {
+        int[] keyboard = {};
+        int[] drives = {};
+
+        assertThrows(IllegalArgumentException.class, ()-> Ex4.findMostExpensiveItem(keyboard,drives));
+    }
+
+    @Test
     public void testFindMostExpensiveDrive() {
         int[] drives = {15, 45, 20};
         int budget = 30;
@@ -64,6 +82,15 @@ public class TestEx4 {
         } catch (AssertionError e) {
             tstUtils.testLogger(TEST_THREE, tstUtils.FAILED);
         }
+    }
+
+    @Test
+    public void testFindMostExpensiveDriveFail() {
+
+        int[] drives = {};
+        int budget = 20;
+        assertThrows(IllegalArgumentException.class, ()-> Ex4.findMostExpensiveDrives(drives, budget));
+
     }
 
     @Test
@@ -83,6 +110,14 @@ public class TestEx4 {
         }
     }
 
+    @Test
+    public void testBudgetFail() {
+        int[] keyboards = {};
+        int[] usbDrives = {};
+        int budget = 60;
+
+        assertThrows(IllegalArgumentException.class, ()-> Ex4.calculateTotalCost(budget,keyboards,usbDrives));
+    }
 
 
 }

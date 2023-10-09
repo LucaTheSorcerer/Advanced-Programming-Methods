@@ -7,6 +7,8 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
+
+import org.junit.rules.ExpectedException;
 import utils.tstUtils;
 
 public class Ex1Test {
@@ -43,6 +45,14 @@ public class Ex1Test {
     }
 
     @Test
+    public void testFailingGradesNull() {
+
+        int[] grades = {};
+        assertThrows(IllegalArgumentException.class, ()-> Ex1.getFailingGrades(grades));
+
+    }
+
+    @Test
     public void testGetAverageGrade() {
         int[] grades = {84, 29, 72, 38, 41};
         double expected = 52.8;
@@ -56,6 +66,15 @@ public class Ex1Test {
         }
 
     }
+
+    @Test
+    public void testGetAverageGradeFail() {
+        int[] grades = {};
+        assertThrows(IllegalArgumentException.class, ()->Ex1.getAverageGrade(grades));
+
+    }
+
+
 
     @Test
     public void testRoundedGrades() {
@@ -72,6 +91,13 @@ public class Ex1Test {
     }
 
     @Test
+    public void testRoundedGradesFail() {
+        int[] grades = {};
+
+        assertThrows(IllegalArgumentException.class, ()->Ex1.getRoundedGrades(grades));
+    }
+
+    @Test
     public void testMaxGrade() {
         int[] grades = {84, 29, 72, 38, 41};
         int expected = 85;
@@ -84,6 +110,14 @@ public class Ex1Test {
         } catch (AssertionError e) {
             utils.tstUtils.testLogger(TEST_FOUR, utils.tstUtils.FAILED);
         }
+    }
+
+    @Test
+    public void testMaxGradeFail() {
+        int[] grades = {};
+
+        assertThrows(IllegalArgumentException.class, ()->Ex1.getMaxRoundedGrade(grades));
+
     }
 }
 

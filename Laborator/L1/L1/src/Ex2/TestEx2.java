@@ -1,8 +1,11 @@
 package Ex2;
 
+import Ex1.Ex1;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static utils.tstUtils.testLogger;
 
 import utils.tstUtils;
@@ -26,12 +29,20 @@ public class TestEx2 {
     }
 
     @Test
-    public void testFindBiggestNr() {
+    public void testFindBiggestNrFail() {
 
         //try catch assert
-        int[] arr = {1, 2, -3, 4, 5, 124};
+        int[] arr = {};
+        assertThrows(IllegalArgumentException.class, ()-> Ex2.returnMaxNumber(arr));
+
+    }
+
+    @Test
+    public void testFindBiggestNr() {
+
+        int[] arr = { 1, 2, -3, 4, 5, 124};
         int expected = 124;
-        int result = ex2.returnMaxNumber(arr);
+        int result = Ex2.returnMaxNumber(arr);
         Assertions.assertEquals(expected, result);
 
         try {
@@ -48,7 +59,7 @@ public class TestEx2 {
     public void testFindMinNumber() {
         int[] arr = {1, 2, -3, 4, 5, 124};
         int expected = -3;
-        int result = ex2.returnMinNumber(arr);
+        int result = Ex2.returnMinNumber(arr);
 
         try {
             Assertions.assertEquals(expected, result);
@@ -59,10 +70,17 @@ public class TestEx2 {
     }
 
     @Test
+    public void testFindMinNumberFail() {
+        int[] arr = {};
+        assertThrows(IllegalArgumentException.class, ()-> Ex2.returnMinNumber(arr));
+
+    }
+
+    @Test
     public void testMaxSum() {
         int[] arr = {4, -1, 3};
         int expected = 7;
-        int result = ex2.returnMaxSum(arr);
+        int result = Ex2.returnMaxSum(arr);
 
         try {
             Assertions.assertEquals(expected, result);
@@ -73,10 +91,18 @@ public class TestEx2 {
     }
 
     @Test
+    public void testMaxSumFail() {
+        int[] arr = {};
+        assertThrows(IllegalArgumentException.class, ()-> Ex2.returnMaxSum(arr));
+
+
+    }
+
+    @Test
     public void testMinSum() {
         int[] arr = {4, -1, 3};
         int expected = 2;
-        int result = ex2.returnMinSum(arr);
+        int result = Ex2.returnMinSum(arr);
 
         try {
             Assertions.assertEquals(expected, result);
@@ -86,5 +112,11 @@ public class TestEx2 {
         }
     }
 
+    @Test
+    public void testMinSumFail() {
+        int[] arr = {};
+        assertThrows(IllegalArgumentException.class, ()-> Ex2.returnMinSum(arr));
 
+
+    }
 }

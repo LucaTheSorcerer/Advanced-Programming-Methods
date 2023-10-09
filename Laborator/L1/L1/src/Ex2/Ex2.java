@@ -12,7 +12,17 @@ public class Ex2 {
 
     //function to sort the array using merge sort
 
-    public void mergeSort(int[] arr, int l, int r) {
+    public static void mergeSort(int[] arr, int l, int r) {
+
+        //exceptions
+
+        if(arr == null) {
+            throw new IllegalArgumentException("Array is null");
+        }
+
+        if (arr.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
         if (l < r) {
             int m = l + (r - l) / 2;
 
@@ -25,7 +35,17 @@ public class Ex2 {
 
     }
 
-    public void merge(int[] arr, int l, int m, int r) {
+    public static void merge(int[] arr, int l, int m, int r) {
+
+        //exceptions
+
+        if(arr == null) {
+            throw new IllegalArgumentException("Array is null");
+        }
+
+        if (arr.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
 
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -64,14 +84,34 @@ public class Ex2 {
 
     //find the maximum number from the sorted array using the above merge sort
 
-    public int returnMaxNumber(int[] arr) {
+    public static int returnMaxNumber(int[] arr) {
+
+        //exceptions
+
+        if(arr == null) {
+            throw  new IllegalArgumentException("Array is null");
+        }
+
+        if (arr.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
 
         mergeSort(arr, 0, arr.length - 1);
 
         return arr[arr.length - 1];
     }
 
-    public int returnMinNumber(int[] arr) {
+    public static int returnMinNumber(int[] arr) {
+
+        //exceptions
+
+        if(arr == null) {
+            throw  new IllegalArgumentException("Array is null");
+        }
+
+        if (arr.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
 
         mergeSort(arr, 0, arr.length - 1);
 
@@ -80,7 +120,17 @@ public class Ex2 {
 
     //find the maximum sum of biggest n-1 number so exclude the smallest number
 
-    public int returnMaxSum(int[] arr) {
+    public static int returnMaxSum(int[] arr) {
+
+        //exceptions
+
+        if(arr == null) {
+            throw  new IllegalArgumentException("Array is null");
+        }
+
+        if (arr.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
 
         mergeSort(arr, 0, arr.length - 1);
 
@@ -96,7 +146,17 @@ public class Ex2 {
 
     //find the minimum sum of smallest n-1 number so exclude the biggest number
 
-    public int returnMinSum(int[] arr) {
+    public static int returnMinSum(int[] arr) {
+
+        //exceptions
+
+        if(arr == null) {
+            throw  new IllegalArgumentException("Array is null");
+        }
+
+        if (arr.length == 0) {
+            throw new IllegalArgumentException("Array is empty");
+        }
 
         mergeSort(arr, 0, arr.length - 1);
 

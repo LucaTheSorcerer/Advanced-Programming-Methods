@@ -1,8 +1,11 @@
 package Ex3;
 
+import Ex2.Ex2;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static utils.tstUtils.testLogger;
 
 
@@ -35,6 +38,15 @@ public class TestEx3 {
     }
 
     @Test
+    public void testAdditionFail() {
+        int[] number1 = {};
+        int[] number2 = {};
+
+        assertThrows(IllegalArgumentException.class, ()-> Ex3.sum(number1, number2));
+
+    }
+
+    @Test
     public void testSubtraction() {
         int[] number1 = {8, 3, 0, 0, 0, 0, 0};
         int[] number2 = {5, 4, 0, 0, 0, 0, 0};
@@ -48,6 +60,14 @@ public class TestEx3 {
         } catch (AssertionError e) {
             testLogger(TEST_TWO, utils.tstUtils.FAILED);
         }
+    }
+    @Test
+    public void testSubtractionFail() {
+
+        int[] number1 = {};
+        int[] number2 = {};
+
+        assertThrows(IllegalArgumentException.class, ()-> Ex3.subtract(number1, number2));
     }
 
     @Test
@@ -67,6 +87,14 @@ public class TestEx3 {
     }
 
     @Test
+    public void testMultiplicationFail() {
+        int[] number = {};
+        int integer = 0;
+
+        assertThrows(IllegalArgumentException.class, ()-> Ex3.multiply(number, integer));
+    }
+
+    @Test
     public void testDivision() {
         int[] number = {2, 3, 6, 0, 0, 0, 0, 0, 0};
         int divisor = 2;
@@ -80,6 +108,14 @@ public class TestEx3 {
         } catch (AssertionError e) {
             testLogger(TEST_FOUR, utils.tstUtils.FAILED);
         }
+    }
+
+    @Test
+    public void testDivisionFail() {
+        int[] number = {};
+        int divisor = 0;
+
+        assertThrows(IllegalArgumentException.class, ()-> Ex3.divide(number, divisor));
     }
 
 }
