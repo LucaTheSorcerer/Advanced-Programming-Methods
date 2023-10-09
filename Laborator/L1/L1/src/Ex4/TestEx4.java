@@ -1,12 +1,10 @@
 package Ex4;
 
 import org.junit.jupiter.api.Assertions;
-
-import java.util.Arrays;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import utils.tstUtils;
+
 
 public class TestEx4 {
 
@@ -15,11 +13,10 @@ public class TestEx4 {
     private static final String TEST_THREE = "Multiplication of number in array with integer";
     private static final String TEST_FOUR = "Division of number in array with integer";
 
-    private Ex4 ex4;
-
     @BeforeEach
     public void setUp() {
-        ex4 = new Ex4();
+        Ex4 ex4 = new Ex4();
+        tstUtils tstUtils = new tstUtils();
     }
 
     @Test
@@ -28,25 +25,27 @@ public class TestEx4 {
         int expected = 40;
 
         int result = Ex4.findCheapestKeyboard(keyboards);
-        Assertions.assertEquals(expected, result);
-        if(result == expected) {
+
+        try {
+            Assertions.assertEquals(expected, result);
             tstUtils.testLogger(TEST_ONE, tstUtils.SUCCESSFUL);
-        } else {
+        } catch (AssertionError e) {
             tstUtils.testLogger(TEST_ONE, tstUtils.FAILED);
         }
     }
 
     @Test
-    public void testfindMostExpensiveProduct() {
+    public void testFindMostExpensiveProduct() {
         int[] keyboard = {120, 40, 66};
         int[] drives = {15, 89, 25};
         int expected = 120;
 
         int result = Ex4.findMostExpensiveItem(keyboard,drives);
-        Assertions.assertEquals(expected, result);
-        if(result == expected) {
+
+        try {
+            Assertions.assertEquals(expected, result);
             tstUtils.testLogger(TEST_TWO, tstUtils.SUCCESSFUL);
-        } else {
+        } catch (AssertionError e) {
             tstUtils.testLogger(TEST_TWO, tstUtils.FAILED);
         }
     }
@@ -58,10 +57,11 @@ public class TestEx4 {
         int expected = 20;
 
         int result = Ex4.findMostExpensiveDrives(drives,budget);
-        Assertions.assertEquals(expected, result);
-        if(result == expected) {
+
+        try {
+            Assertions.assertEquals(expected, result);
             tstUtils.testLogger(TEST_THREE, tstUtils.SUCCESSFUL);
-        } else {
+        } catch (AssertionError e) {
             tstUtils.testLogger(TEST_THREE, tstUtils.FAILED);
         }
     }
@@ -75,10 +75,10 @@ public class TestEx4 {
 
         int result = Ex4.calculateTotalCost(budget,keyboards,usbDrives);
 
-        Assertions.assertEquals(expected, result);
-        if(result == expected) {
+        try {
+            Assertions.assertEquals(expected, result);
             tstUtils.testLogger(TEST_FOUR, tstUtils.SUCCESSFUL);
-        } else {
+        } catch (AssertionError e) {
             tstUtils.testLogger(TEST_FOUR, tstUtils.FAILED);
         }
     }

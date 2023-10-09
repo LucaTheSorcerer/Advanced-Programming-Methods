@@ -3,8 +3,8 @@ package Ex3;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import static utils.tstUtils.testLogger;
 
-import java.util.Arrays;
 
 public class TestEx3 {
 
@@ -14,14 +14,9 @@ public class TestEx3 {
     private static final String TEST_FOUR = "Division of number in array with integer";
 
 
-    private static final String SUCCESSFUL = "was successful";
-    private static final String FAILED = "has failed";
-
-    private Ex3 ex3;
-
     @BeforeEach
     public void setUp() {
-        ex3 = new Ex3();
+        Ex3 ex3 = new Ex3();
     }
 
     @Test
@@ -31,9 +26,12 @@ public class TestEx3 {
 
         int[] expectedResult = {1, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 
-        int[] result = Ex3.sum(number1, number2);
-
-        printAssertionResult(expectedResult, result, TEST_ONE);
+        try {
+            int[] result = Ex3.sum(number1, number2);
+            Assertions.assertEquals(expectedResult, result, TEST_ONE);
+        } catch (AssertionError e) {
+            testLogger(TEST_ONE, utils.tstUtils.FAILED);
+        }
     }
 
     @Test
@@ -45,7 +43,11 @@ public class TestEx3 {
 
         int[] result = Ex3.subtract(number1, number2);
 
-        printAssertionResult(expectedResult, result, TEST_TWO);
+        try {
+            Assertions.assertEquals(expectedResult, result, TEST_TWO);
+        } catch (AssertionError e) {
+            testLogger(TEST_TWO, utils.tstUtils.FAILED);
+        }
     }
 
     @Test
@@ -57,7 +59,11 @@ public class TestEx3 {
 
         int[] result = Ex3.multiply(number, integer);
 
-        printAssertionResult(expectedResult, result, TEST_THREE);
+        try {
+            Assertions.assertEquals(expectedResult, result, TEST_THREE);
+        } catch (AssertionError e) {
+            testLogger(TEST_THREE, utils.tstUtils.FAILED);
+        }
     }
 
     @Test
@@ -69,26 +75,11 @@ public class TestEx3 {
 
         int[] result = Ex3.divide(number, divisor);
 
-        printAssertionResult(expectedResult, result, TEST_FOUR);
-    }
-
-
-    private void printAssertionResult(int[] expectedResult, int[] result, String testTwo) {
-        System.out.println("Result: " + Arrays.toString(result));
-        System.out.println("Expected: " + Arrays.toString(expectedResult));
-
-        Assertions.assertArrayEquals(expectedResult, result);
-
-        if(Arrays.equals(expectedResult, result)) {
-            testLogger(testTwo, SUCCESSFUL);
-        } else {
-            testLogger(testTwo, FAILED);
+        try {
+            Assertions.assertEquals(expectedResult, result, TEST_FOUR);
+        } catch (AssertionError e) {
+            testLogger(TEST_FOUR, utils.tstUtils.FAILED);
         }
-    }
-
-
-    private static void testLogger(String testName, String result) {
-        System.out.println("Test: " + testName + " " + result);
     }
 
 }

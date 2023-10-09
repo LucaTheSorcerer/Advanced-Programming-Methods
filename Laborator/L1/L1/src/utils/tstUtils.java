@@ -10,7 +10,7 @@ public class tstUtils {
     public static final String FAILED = "has failed";
 
 
-    private void printAssertionResult(int[] expectedResult, int[] result, String testTwo) {
+    public void printAssertionResult(int[] expectedResult, int[] result, String testTwo) {
         System.out.println("Result: " + Arrays.toString(result));
         System.out.println("Expected: " + Arrays.toString(expectedResult));
 
@@ -22,6 +22,8 @@ public class tstUtils {
             testLogger(testTwo, FAILED);
         }
     }
+
+
 
 
     public static void testLogger(String testName, String result) {

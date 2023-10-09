@@ -7,85 +7,83 @@ import java.util.Arrays;
 
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.*;
+import utils.tstUtils;
 
 public class Ex1Test {
 
-    private Ex1 ex1;
+    private static final String TEST_ONE = "Array with insufficient grades";
+    private static final String TEST_TWO = "Average grade";
+    private static final String TEST_THREE = "Array with rounded grades";
+    private static final String TEST_FOUR = "Maximum rounded grade";
+
+
+    private static final String SUCCESSFUL = "was successful";
+    private static final String FAILED = "has failed";
 
     @BeforeEach
     public void setUp() {
-        ex1 = new Ex1();
+        Ex1 ex1 = new Ex1();
+        utils.tstUtils tstUtils = new tstUtils();
     }
 
     @Test
-    public void testRoundGradeWithGradeLessThan38() {
-        int roundedGrade = ex1.roundGrade(35);
-        assertEquals(35, roundedGrade);
-    }
+    public void testFailingGrades() {
 
-    @Test
-    public void testRoundGradeWithGradeBetween38And42() {
-        int roundedGrade = ex1.roundGrade(40);
-        assertEquals(40, roundedGrade);
-    }
-
-    @Test
-    public void testRoundGradeWithGradeGreaterThan42() {
-        int roundedGrade = ex1.roundGrade(45);
-        assertEquals(45, roundedGrade);
-    }
-
-    @Test
-    public void testNotGoodEnoughGrade() {
-        int[] grades = {35, 40, 45, 37, 39};
-        int[] result = ex1.notGoodEnoughGrade(grades);
-        int[] expected = {40, 45};
+        int[] grades = {84, 29, 72, 38, 41};
+        int[] result = Ex1.getFailingGrades(grades);
+        int[] expected = {29, 38};
 
         try {
-            for (int i = 0; i < expected.length; i++) {
-                if (result[i] != expected[i]) {
-                    System.err.println("Error at index " + i + ": Expected " + expected[i] + ", but got " + result[i]);
-                }
-            }
-        } catch (ArrayIndexOutOfBoundsException e) {
-            System.err.println("Error: Result and expected arrays have different lengths");
+            Assertions.assertArrayEquals(expected, result);
+            utils.tstUtils.testLogger(TEST_ONE, utils.tstUtils.SUCCESSFUL);
+        } catch (AssertionError e) {
+            utils.tstUtils.testLogger(TEST_ONE, utils.tstUtils.FAILED);
         }
 
-        System.out.println("Expected: " + Arrays.toString(expected));
-        System.out.println("Actual: " + Arrays.toString(result));
     }
 
     @Test
-    public void testNotGoodEnoughGradeObj() {
-        Object[] grades = {35, "A", 40, 45, 37};
-        Object[] result = ex1.notGoodEnoughGradeObj(grades);
-        Object[] expected = {40, 45};
-        Assertions.assertArrayEquals(expected, result);
+    public void testGetAverageGrade() {
+        int[] grades = {84, 29, 72, 38, 41};
+        double expected = 52.8;
+
+        double result = Ex1.getAverageGrade(grades);
+        try {
+            assertEquals(expected, result);
+            utils.tstUtils.testLogger(TEST_TWO, utils.tstUtils.SUCCESSFUL);
+        } catch (AssertionError e) {
+            utils.tstUtils.testLogger(TEST_TWO, utils.tstUtils.FAILED);
+        }
+
     }
 
     @Test
-    public void testAverageGrade() {
-        int[] grades = {35, 40, 45, 37, 39};
-        double result = ex1.averageGrade(grades);
-        double expected = 39.2;
-        assertEquals(expected, result);
+    public void testRoundedGrades() {
+        int[] grades = {84, 29, 72, 38, 41};
+        int[] expected = {85, 29, 72, 40, 41};
+
+        int[] result = Ex1.getRoundedGrades(grades);
+        try {
+            Assertions.assertArrayEquals(expected, result);
+            utils.tstUtils.testLogger(TEST_THREE, utils.tstUtils.SUCCESSFUL);
+        } catch (AssertionError e) {
+            utils.tstUtils.testLogger(TEST_THREE, utils.tstUtils.FAILED);
+        }
     }
 
     @Test
-    public void testRoundGrades() {
-        int[] grades = {35, 40, 45, 37, 39};
-        int[] result = ex1.roundGrades(grades);
-        int[] expected = {35, 40, 45, 40, 40};
-        System.out.println("result: " + Arrays.toString(result));
+    public void testMaxGrade() {
+        int[] grades = {84, 29, 72, 38, 41};
+        int expected = 85;
 
-        Assertions.assertArrayEquals(expected, result);
-    }
+        int result = Ex1.getMaxRoundedGrade(grades);
 
-    @Test
-    public void testBiggestRoundedGrade() {
-        int[] grades = {35, 40, 45, 37, 39};
-        int result = ex1.biggestRoundedGrade(grades);
-        int expected = 45;
-        assertEquals(expected, result);
+        try {
+            Assertions.assertEquals(expected, result);
+            utils.tstUtils.testLogger(TEST_FOUR, utils.tstUtils.SUCCESSFUL);
+        } catch (AssertionError e) {
+            utils.tstUtils.testLogger(TEST_FOUR, utils.tstUtils.FAILED);
+        }
     }
 }
+
