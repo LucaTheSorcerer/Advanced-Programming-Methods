@@ -47,5 +47,10 @@ class Filter {
     public static List<Entity> canCut(List<Entity> entities) {
         return entities.filter((Entity::canCut));
     }
+
+
+    public static List<Entity> canCutInterface(List<Entity> entities) {
+        return entities.filter(entity -> entity instanceof Cut);
+    }
 }
 

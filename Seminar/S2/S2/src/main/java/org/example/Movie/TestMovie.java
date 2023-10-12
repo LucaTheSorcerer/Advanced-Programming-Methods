@@ -28,10 +28,11 @@ public class TestMovie {
     }
 
     @Test
-    void testOrderLineWithUnsupportedOperation() {
-        OrderLine orderLine = new OrderLine((movie, quantity) -> {
-            throw new UnsupportedOperationException("Test Exception");
-        });
+    void testOrderLineWithUnsupportedOperationThatWorks() {
+        OrderLine orderLine = new OrderLine((movie, quantity) -> 0.0);
 
+        assertEquals(0.0, orderLine.computeMoviePrice(new SciFiMovie("Star Wars", 1977, 8.6), 1));
     }
+
+
 }

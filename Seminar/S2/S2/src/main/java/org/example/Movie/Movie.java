@@ -2,7 +2,7 @@ package org.example.Movie;
 import io.vavr.Function2;
 import io.vavr.control.Option;
 
-abstract class Movie {
+public abstract class Movie {
     protected final String title;
     protected final int releaseYear;
     protected final double evaluation;
@@ -56,21 +56,9 @@ class ComedyMovie extends Movie {
             throw new UnsupportedOperationException("Discount not supported for this comedy movie.");
         }
     }
+
+
 }
 
-class OrderLine {
-    private final Function2<Movie, Integer, Double> computeMoviePrice;
 
-    public OrderLine(Function2<Movie, Integer, Double> computeMoviePrice) {
-        this.computeMoviePrice = computeMoviePrice;
-    }
 
-    public double computeMoviePrice(Movie movie, int quantity) {
-        try {
-            return computeMoviePrice.apply(movie, quantity);
-        } catch (UnsupportedOperationException e) {
-            System.err.println("Error: " + e.getMessage());
-            return 0.0;
-        }
-    }
-}

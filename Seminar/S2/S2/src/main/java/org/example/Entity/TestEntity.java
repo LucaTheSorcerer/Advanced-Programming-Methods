@@ -43,4 +43,12 @@ public class TestEntity {
         assertEquals(2, canCutEntities.size());
         assertTrue(canCutEntities.forAll(Entity::canCut));
     }
+
+    @Test
+    public void testHammer() {
+        Hammer hammer = new Hammer("Hammer", 2.0, false);
+        assertEquals("Hammer", hammer.getName());
+        assertEquals(2.0, hammer.getWeight());
+        assertFalse(hammer.canCut());
+    }
 }
