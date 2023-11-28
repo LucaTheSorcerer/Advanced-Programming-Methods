@@ -40,9 +40,39 @@ public class Main {
             System.out.println(card.toString());
         }
 
-
+        RemoteFactory rf = new RemoteFactory();
 
         System.out.println(deck.getCard().toString());
+
+        Tv tv = new Tv("Samsung", List.of("HBO", "MTV", "CNN"));
+        Remote basic = rf.createRemote("basic", tv);
+        tv.setRemote(basic);
+
+        tv.channelUp();
+        tv.channelUp();
+        tv.channelUp();
+        tv.channelUp();
+
+        System.out.println(tv);
+
+        Remote remote = (Remote) tv.iterator();
+
+        remote.next();
+        remote.next();
+
+
+        Remote smart = rf.createRemote("smart", tv);
+
+        tv.setRemote(smart);
+
+        tv.channelUp();
+        tv.channelUp();
+        tv.channelUp();
+        tv.channelUp();
+
+        System.out.println(tv);
+
+
 
     }
 }
