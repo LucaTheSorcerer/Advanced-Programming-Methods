@@ -12,7 +12,6 @@ public class PasswordChecker {
                 "Strong@Password"
         );
 
-        // Check and print the validity of each password
         passwords.forEach(password -> {
             boolean isValid = isPasswordValid(password);
             System.out.println(password + ": " + (isValid ? "Valid" : "Not Valid"));
@@ -20,7 +19,6 @@ public class PasswordChecker {
     }
 
     private static boolean isPasswordValid(String password) {
-        // Check password length, presence of digit, uppercase letter, and special symbol
         return password.length() > 8 &&
                 password.chars().anyMatch(Character::isDigit) &&
                 password.chars().anyMatch(Character::isUpperCase) &&

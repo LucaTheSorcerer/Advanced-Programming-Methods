@@ -13,11 +13,11 @@ public class WordFilterFromFile {
 
         try {
             var words = Files.lines(Paths.get(filePath))
-                    .flatMap(line -> Arrays.stream(line.split("\\s+"))) // Split each line into words
-                    .filter(word -> word.toLowerCase().contains("ete") || word.toLowerCase().contains("ar")) // Filter words that contain either "ete" or "ar"
+                    .flatMap(line -> Arrays.stream(line.split("\\s+")))
+                    .filter(word -> word.toLowerCase().contains("ete") || word.toLowerCase().contains("ar"))
                     .sorted(Comparator.naturalOrder())
                     .map(word -> word.toUpperCase() + "!")
-                    .collect(Collectors.toList());
+                    .toList();
 
             words.forEach(System.out::println);
         } catch (IOException e) {

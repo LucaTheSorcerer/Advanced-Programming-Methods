@@ -8,21 +8,20 @@ import java.util.stream.Collectors;
 
 public class CarGrouping {
     public static void main(String[] args) {
-        // Given list of cars
         List<Car> cars = Arrays.asList(
-                new Car("Dacia", "Papuc", 1995),
                 new Car("Kia", "None", 1908),
-                new Car("Ford", "Fiesta", 1997),
-                new Car("VW", "Lupo", 1999)
+                new Car("Dacia", "Papuc", 1995),
+                new Car("VW", "Lupo", 1999),
+                new Car("Ford", "Fiesta", 1997)
         );
 
-        // Group Dacias by Baujahr
-        Map<Integer, List<String>> daciaGroupedByYear = cars.stream()
-                .filter(car -> car.getBrand().equals("Dacia"))
-                .collect(Collectors.groupingBy(Car::getYear,
-                        Collectors.mapping(Car::getModel, Collectors.toList())));
+        Map<Integer, List<String>> carModelsByYear = cars.stream()
+                .filter(car -> !car.getModel().equals("None"))
+                .collect(Collectors.groupingBy(
+                        Car::getYear,
+                        Collectors.mapping(Car::getModel, Collectors.toList())
+                ));
 
-        // Print the desired text
-        System.out.println(String.join(", ", daciaGroupedByYear.get(1995)));
+        System.out.println(carModelsByYear);
     }
 }
