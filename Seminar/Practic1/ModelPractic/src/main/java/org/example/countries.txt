@@ -1,0 +1,3 @@
+Afghanistan Asien 652230 25500100 Kabul
+Albanien Europa 28748 2821977 Tirana
+Mexico America 652230 25500100 MexicoCity
