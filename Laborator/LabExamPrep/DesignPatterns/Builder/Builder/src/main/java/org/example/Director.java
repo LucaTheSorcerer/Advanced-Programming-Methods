@@ -1,2 +1,4 @@
-package org.example;public class Director {
+package org.example;
+
+public class Director {
 }

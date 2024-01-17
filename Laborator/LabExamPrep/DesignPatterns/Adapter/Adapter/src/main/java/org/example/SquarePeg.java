@@ -1,10 +1,10 @@
 package org.example;
 
-public class Square {
+public class SquarePeg {
 
     private double width;
 
-    public Square(double width) {
+    public SquarePeg(double width) {
         this.width = width;
     }
 

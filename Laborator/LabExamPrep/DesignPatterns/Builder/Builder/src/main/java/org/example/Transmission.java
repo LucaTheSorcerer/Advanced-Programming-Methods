@@ -1,2 +1,4 @@
-package org.example;public class Transmission {
+package org.example;
+
+public class Transmission {
 }

@@ -1,2 +1,4 @@
-package org.example;public class TripComputer {
+package org.example;
+
+public class TripComputer {
 }

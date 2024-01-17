@@ -1,2 +1,4 @@
-package org.example;public enum CarType {
+package org.example;
+
+public enum CarType {
 }

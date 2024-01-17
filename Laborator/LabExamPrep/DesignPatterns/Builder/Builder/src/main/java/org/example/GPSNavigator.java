@@ -1,2 +1,4 @@
-package org.example;public class GPSNavigator {
+package org.example;
+
+public class GPSNavigator {
 }

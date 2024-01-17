@@ -1,2 +1,4 @@
-package org.example;public class CarBuilder {
+package org.example;
+
+public class CarBuilder {
 }
